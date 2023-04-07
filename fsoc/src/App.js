@@ -4,6 +4,7 @@ import HomePage from './components/homepage/homePage';
 import Login from './components/login/login';
 import Register from './components/register/register';
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
+import Main from './components/main/Main';
 
 
 function App() {
@@ -12,13 +13,21 @@ function App() {
 
   return (
     < div className="App">
+      <Main/>
        <BrowserRouter>
     <Routes>
-      <Route path="/" element={user ? <HomePage/> : <Login setLoginUser={setLoginUser}/>} />
-     
-        <Route path="/login" element={<Login setLoginUser={setLoginUser} />} />
+        {/* <Route path="/" element={<HomePage />} /> */}
+        {/* <Route path="/" element={} /> */}
 
-        <Route path="/register" element={<Register />} />
+
+        
+
+      {/* <Route path="/" element={user ? <HomePage/> : <Login setLoginUser={setLoginUser}/>} /> */}
+
+     
+        {/* <Route path="/login" element={<Login setLoginUser={setLoginUser} />} /> */}
+
+        {/* <Route path="/register" element={<Register />} /> */}
         
     
     </Routes>
