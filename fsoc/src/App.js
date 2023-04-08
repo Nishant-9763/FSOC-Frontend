@@ -13,11 +13,12 @@ function App() {
 
   return (
     < div className="App">
-      <Main/>
+      {/* <Main/> */}
        <BrowserRouter>
     <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
-        {/* <Route path="/" element={} /> */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/main" element={<Main/>} />
+        <Route path="/login" element={<Login/>} />
 
 
         
@@ -27,7 +28,7 @@ function App() {
      
         {/* <Route path="/login" element={<Login setLoginUser={setLoginUser} />} /> */}
 
-        {/* <Route path="/register" element={<Register />} /> */}
+        <Route path="/register" element={<Register />} />
         
     
     </Routes>

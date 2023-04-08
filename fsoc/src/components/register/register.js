@@ -22,7 +22,7 @@ const Register = () =>{
                 alert(`Your registered Succesfully`)
                 const token = res.data.token;
                 localStorage.setItem("group2project-5", token)
-                navigate('/')
+                // navigate('/')
             }).catch((err) => {
                 alert(err.response.data.message)//+ err.response.status+ " Error"
             })
