@@ -15,14 +15,22 @@ const Login = () =>{
 
     const login = function (event) {
         event.preventDefault();
-        axios.post('http://localhost:3001/login', {
+        axios.post('http://localhost:3001/user/login', {
            email,password
         })
             .then((res) => {
                 alert(`Your Acount Login Succesfully`)
-                const token = res.data.token;
-                localStorage.setItem("group2project-5", token)
-                navigate('/')
+            const userId  =  res.data.data.userId
+                console.log(res.data.data.token);
+
+                const token = res.data.data.token;
+                // console.log(token)
+                localStorage.setItem('group2project-5',token)
+                
+                // localStorage.setItem('userId',userId)
+
+
+                navigate(`/image/getImage/${userId}`)
             }).catch((err) => {
                 alert(err.response.data.message + err.response.status + " Error")
             })
