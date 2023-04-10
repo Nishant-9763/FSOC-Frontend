@@ -6,7 +6,7 @@ import Register from './components/register/register';
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 import Main from './components/main/Main';
 import Header from './components/header/nav';
-import {userNotFound} from './components/notFound/NotFound'
+// import {userNotFound} from './components/notFound/NotFound'
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/image/generateImage/:userId" element={<Main/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register />} />
-        <Route path='*'  element={<userNotFound />}/>
+        {/* <Route path='*'  element={<userNotFound />}/> */}
 
         
 

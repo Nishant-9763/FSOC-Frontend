@@ -22,10 +22,10 @@ function Header() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Item>
-            <Link to="/" className="nav-link">See Images</Link>
+            {/* <Link to="/login" className="nav-link">See Images</Link> */}
           </Nav.Item>          
           <Nav.Item>
-            <Link to="/" className="nav-link">Create Image</Link>
+            {/* <Link to="/login" className="nav-link">Create Image</Link> */}
           </Nav.Item>
           <Nav.Item>
             <Link to="/register" className="nav-link">Register</Link>
@@ -33,18 +33,18 @@ function Header() {
           <Nav.Item>
             <Link to="/login" className="nav-link">Login</Link>
           </Nav.Item>
-        <NavDropdown title={"User"||user}>
-          <NavItem onClick={logOut}>
-            LogOut
-          </NavItem>
-        </NavDropdown>
     
         </Nav>
       </Navbar.Collapse>
-      {/* {localStorage.getItem('user_name') ?
+      {localStorage.getItem('user_name') ?
       <Nav>
+      <NavDropdown title={"User"||user}>
+        <NavItem  onClick={logOut}>
+          Logout
+        </NavItem>
+      </NavDropdown>
       </Nav>
-      : null} */}
+      : null}
     </Navbar>
   );
 }

@@ -17,7 +17,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #333;
-  background: #f4f4f4;
+  background: #dbd8d8;
 }
 
 /* Navbar */
@@ -84,14 +84,17 @@ form select {
 }
 
 form button {
+  margin: auto  ;
+  width: 20px;
   font-size: 20px;
   padding: 1rem 2rem;
   border: none;
   border-radius: 5px;
   background: #333;
-  color: #fff;
+  color: #1c1a1a;
   cursor: pointer;
   margin-top: 20px;
+  
 }
 
 form button:hover {
@@ -114,4 +117,46 @@ img {
   font-size: 1.6rem;
   text-align: center;
   margin-top: 1rem;
+}
+
+
+.delete{
+border-color: #fff;
+width: 20px;
+height: 20px;
+
+}
+.create{
+  
+  margin: auto;
+  width: 200px;
+  height: 50px;
+  /* background-color: #0d0c0c; */
+  font-size: 15px;
+ color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  
+  background: #090909;
+ text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+.create:hover {
+  transform: scale(1.1);
+}
+.nav-link{
+margin-left: 30px;
+}
+.card{
+  margin-top: 20px;
+  border-radius: 5px;
+  border-color: #faf7f7;
+  border-style: dotted;
+  box-shadow: 0 0 1em gray;
+  position:static;
+}
+.card:hover {
+  transform: scale(1.1);
 }

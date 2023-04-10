@@ -13,7 +13,9 @@ const HomePage = () => {
 
   const navigate = useNavigate()
   const { userId } = useParams();
-  // console.log(useParams())
+if(userId.length <24){
+  console.log("error");
+}
 
   // const userId = localStorage.getItem("userId")
   // console.log(userId);
@@ -31,14 +33,14 @@ const HomePage = () => {
      axios.get(`http://localhost:3001/image/getImage/${userId}` ,  {'headers': {'Authorization': 'Bearer ' + token}} )
      
      .then((res)=>{
+       if(res.data.data.length==0) return (<h1>  Images not created Yet</h1>)
        if(res.data.data.length == 0) {console.log("no data present");}
        setUserData(res.data.data)
-      //  console.log(res.data);
        
      }).catch((error)=>{
       // alert("please login first")
       //  navigate('/login');
-      alert(err.response.data.message + " Error")
+      alert(error.response.data.message + " Error")
      
     
       navigate('/login')
@@ -49,39 +51,24 @@ const HomePage = () => {
      }
     useEffect(()=>{
 
-
-    // console.log("xx",token);
-
-   
-       
-      //   async function getUserData(){
-      //       try{
-      //   }
-      //  catch (error) {
-      //   console.log(error);
-      //  }
     getUser()
-      //  getUserData()
+      
     },[])
-  //   const deleteImage=(e)=>{
-  //     e.preventDefault()
-  //        axios.delete(`http://localhost:3001/image/deleteImage/${userId}/${imageId}`,{ headers: { "x-auth-key": token } }).then(()=>{navigate('/')}).catch((a)=>alert(a.message))
-  // }
+  
 function deleteImage(id){
   alert(id)
   axios.delete(`http://localhost:3001/image/deleteImage/${userId}/${id}`, {'headers': {'Authorization': 'Bearer ' + token}})
   .then((res)=>{
-    console.log(res);
+    if(res.length===0)return (<h1>No data present</h1>)
     getUser()
   })
 }
 
-
- 
 const routeChange = () =>{ 
   let path = `/image/generateImage/${userId}`; 
   navigate(path);
 }
+
   return (
     <div className="homepage">
       
@@ -100,62 +87,23 @@ const routeChange = () =>{
         {userData.map(book => (
           <Col md={4} key={book._id}>
             
-            <Card>
+            <Card className="card">
               <Card.Img variant="top" src={book.imageUrl} />
               <Card.Body>
                 <Card.Title>{book.prompt}</Card.Title>
-                {/* <Card.Text>
-                  {book.reviews}
-                </Card.Text> */}
-                <Button variant="primary"  onClick={()=>deleteImage(book._id)}>Delete</Button>
+              
+                <Button variant="primary" className="delete"  onClick={()=>deleteImage(book._id)}>Delete</Button>
             
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
-      <Button variant='secondary' onClick={routeChange} > Create Image</Button>
+      <button variant='secondary' className="create" onClick={routeChange} > Create Image</button>
       
       
     </Container>
-
-       
-
-        {/* <Card style={{ width: "20rem" }} className="img-strong  bg-image hover-zoom shadow-2-strong rounded-4 " key={i}>
-        <Card.Img
-         className='bg-image hover-zoom'
-          variant="top"
-          src={student.imageUrl}//"https://res.cloudinary.com/ddraawvgd/image/upload/v1680849218/1680849217670.png"
-          height={200}
-          width={200}
-        />
-        <Card.Body >
-          <Card.Title  >{student.prompt}</Card.Title>
-          
-          <Button   variant="primary" color="red">Delete</Button>
-       
-        </Card.Body>
-       
-       
-      </Card> */}
-      {/* <br></br> */}
-      
-     
-     
-       
-    {/* )
-}
-        */}
-      
-      
-       
-   
-     
-
-        
-        
-         
-       
+  
      
     </div>
   );

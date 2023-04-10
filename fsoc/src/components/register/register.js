@@ -27,7 +27,7 @@ const Register = () =>{
                 localStorage.setItem("user_name", naam)
                  navigate('/login')
             }).catch((err) => {
-                alert(err.response.data.message)//+ err.response.status+ " Error"
+                alert(err.response.data.message + "Error")//+ err.response.status+ " Error"
             })
     }
 

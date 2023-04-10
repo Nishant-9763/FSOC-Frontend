@@ -43,7 +43,7 @@ const Main = () => {
         })
         .catch((err) => {
           alert(err.response.data.message + " Error")
-          navigate('/login')
+          
         })
     }
    
@@ -59,13 +59,13 @@ const Main = () => {
     <div className='divn'>
        
        <form onSubmit={create}  className="form">
-            <h1>Descibe Your Text</h1>
+            <p className="h1">Descibe Your Text</p>
             <input className="prompt" type="text" placeholder='Enter text' onChange={((e)=>setPrompt(e.target.value))} /> <br/>
             {/* <input placeholder='enter size' /> <br/> */}
             {/* <button type="submit">Generate</button> */}
-            {loading ? "":(<input className="btn btn-primary" type="submit" placeholder="Generate" />)}
+            {loading ? "":(<input className="btn" type="submit" placeholder="Generate" />)}
             {loading ? <div>
-                      <Spinner animation="border" variant="info" />
+                      <Spinner className="spin" animation="border" variant="info" />
                      
                       </div>
             
@@ -75,7 +75,7 @@ const Main = () => {
             <img border="primary"  src={nishnat} width={"600px"} height={"400px"}/> 
         </form>
 
-        <Button onClick={routeChange}>Get Image</Button>
+        <Button className="get" onClick={routeChange}>Get All Images</Button>
 
     </div>
   )
