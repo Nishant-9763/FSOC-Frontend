@@ -26,6 +26,7 @@ const Login = () =>{
                 const token = res.data.data.token;
                 // console.log(token)
                 localStorage.setItem('group2project-5',token)
+                localStorage.setItem('user_id',userId)
                 
                 // localStorage.setItem('userId',userId)
 

@@ -8,23 +8,25 @@ import Spinner from 'react-bootstrap/Spinner';
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 
 
 const Main = () => {
   const { userId } = useParams();
-  // console.log(useParams());
+  if(userId.length <24){
+    alert("invaild route Please enter valid")
+  }
   let navigate = useNavigate()
   
   const [prompt,setPrompt] = useState('')
-  const [nishnat,setNishnat] = useState('')
+  const [nishnat,setNishnat] = useState([])
   const [loading,setLoading] = useState(false)
   
   const token = localStorage.getItem("group2project-5")
 
   // console.log(token);
   if(!token){
-    navigate('/login')
+    navigate('/')
     alert("please login first")
   
   }
@@ -37,13 +39,13 @@ const Main = () => {
       axios.post(`http://localhost:3001/image/generateImage/${userId}`,{prompt},{'headers': {'Authorization': 'Bearer ' + token}})
         .then((res) => {
           
-          console.log(res.data.data);
           setNishnat(res.data.data.imageUrl)
+          
           setLoading(false)
         })
-        .catch((err) => {
-          alert(err.response.data.message + " Error")
-          
+        .catch((error) => {
+         
+          alert(error.response.data.message + " Error")
         })
     }
    
@@ -72,9 +74,25 @@ const Main = () => {
                                  : ""  }
                 <br />
 
-            <img border="primary"  src={nishnat} width={"600px"} height={"400px"}/> 
-        </form>
 
+            
+        </form>
+        <div>
+                            <div class="row">
+                      <div class="column">
+                        <img src={nishnat[0]}  />
+                      </div>
+                      <div class="column">
+                        <img src={nishnat[1]} />
+                      </div>
+                      <div class="column">
+                        <img src={nishnat[2]}/>
+                      </div>
+                    </div>
+       
+          
+        </div>
+        <br />
         <Button className="get" onClick={routeChange}>Get All Images</Button>
 
     </div>

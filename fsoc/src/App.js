@@ -17,7 +17,6 @@ function App() {
 
   return (
     
-    < div >
     
        <BrowserRouter  className="App">
        
@@ -25,7 +24,7 @@ function App() {
     <Routes>
         <Route path="/image/getImage/:userId" element={<HomePage />} />
         <Route path="/image/generateImage/:userId" element={<Main/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/" element={<Login/>}   />
         <Route path="/register" element={<Register />} />
         {/* <Route path='*'  element={<userNotFound />}/> */}
 
@@ -39,11 +38,12 @@ function App() {
         
     
     </Routes>
+    
   </BrowserRouter>
       
       
       
-    </div>
+   
   );
 }
 

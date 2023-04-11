@@ -25,7 +25,7 @@ const Register = () =>{
                 let naam = res.data.data.name
                 // const token = res.data.token;
                 localStorage.setItem("user_name", naam)
-                 navigate('/login')
+                 navigate('/')
             }).catch((err) => {
                 alert(err.response.data.message + "Error")//+ err.response.status+ " Error"
             })
@@ -46,7 +46,7 @@ const Register = () =>{
 
             <div className="button" onClick={register}>Register</div>
             <div>or</div>
-            <div className="button" onClick={()=>navigate("/login")}>Login</div>
+            <div className="button" onClick={()=>navigate("/")}>Login</div>
 
         </div>
     )

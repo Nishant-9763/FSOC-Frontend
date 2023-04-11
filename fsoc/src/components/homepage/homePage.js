@@ -27,7 +27,7 @@ if(userId.length <24){
     if(!token){
       alert("please login first")
     
-      navigate('/login')
+      navigate('/')
     }
     function getUser(){ 
      axios.get(`http://localhost:3001/image/getImage/${userId}` ,  {'headers': {'Authorization': 'Bearer ' + token}} )
@@ -38,16 +38,14 @@ if(userId.length <24){
        setUserData(res.data.data)
        
      }).catch((error)=>{
-      // alert("please login first")
-      //  navigate('/login');
-      alert(error.response.data.message + " Error")
+     
+      alert( error.response.data.message + " Error")
      
     
-      navigate('/login')
-      //  console.log(error);
-       })
-        // console.log(userData.data.data)}
+      // navigate('/')
      
+       })
+        
      }
     useEffect(()=>{
 
@@ -56,10 +54,10 @@ if(userId.length <24){
     },[])
   
 function deleteImage(id){
-  alert(id)
+  alert(" Image deleted ")
   axios.delete(`http://localhost:3001/image/deleteImage/${userId}/${id}`, {'headers': {'Authorization': 'Bearer ' + token}})
   .then((res)=>{
-    if(res.length===0)return (<h1>No data present</h1>)
+    if(res.length===0)return (alert("No Images created , Please create Image by clicking ob button"))
     getUser()
   })
 }
