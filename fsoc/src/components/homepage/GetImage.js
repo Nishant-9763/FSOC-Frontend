@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-import "./homePage.css";
-// import Button from "react-bootstrap/Button";
+import "./GetImage.css";
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import axios from "axios";
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Main from "../main/Main";
+import {successToast,errorToast} from '../alert'
+
+
 
 
 const HomePage = () => {
 
   const navigate = useNavigate()
   const { userId } = useParams();
-if(userId.length <24){
-  console.log("error");
+  if(userId.length <24){
+    errorToast("error : Please enter right userID");
+
 }
 
   // const userId = localStorage.getItem("userId")
@@ -25,21 +26,20 @@ if(userId.length <24){
 
     const token = localStorage.getItem("group2project-5")
     if(!token){
-      alert("please login first")
-    
       navigate('/')
+      errorToast("please login first")
+    
     }
     function getUser(){ 
      axios.get(`http://localhost:3001/image/getImage/${userId}` ,  {'headers': {'Authorization': 'Bearer ' + token}} )
      
      .then((res)=>{
-       if(res.data.data.length==0) return (<h1>  Images not created Yet</h1>)
-       if(res.data.data.length == 0) {console.log("no data present");}
+       if(res.data.data.length == 0) {successToast("No images to show ,Please create first")}
        setUserData(res.data.data)
        
      }).catch((error)=>{
      
-      alert( error.response.data.message + " Error")
+      errorToast( error.response.data.message + " Error")
      
     
       // navigate('/')
@@ -57,15 +57,15 @@ function deleteImage(id){
   alert(" Image deleted ")
   axios.delete(`http://localhost:3001/image/deleteImage/${userId}/${id}`, {'headers': {'Authorization': 'Bearer ' + token}})
   .then((res)=>{
-    if(res.length===0)return (alert("No Images created , Please create Image by clicking ob button"))
+ 
     getUser()
   })
 }
 
-const routeChange = () =>{ 
-  let path = `/image/generateImage/${userId}`; 
-  navigate(path);
-}
+// const routeChange = () =>{ 
+//   let path = `/image/generateImage/${userId}`; 
+//   navigate(path);
+// }
 
   return (
     <div className="homepage">
@@ -74,7 +74,7 @@ const routeChange = () =>{
       <Container>
       <Row className="my-4">
         <Col>
-          {/* <h1>My Blog</h1> */}
+          
 
 
         </Col>
@@ -90,14 +90,14 @@ const routeChange = () =>{
               <Card.Body>
                 <Card.Title>{book.prompt}</Card.Title>
               
-                <Button variant="primary" className="delete"  onClick={()=>deleteImage(book._id)}>Delete</Button>
+                <button variant="primary" className="delete"  onClick={()=>deleteImage(book._id)}>Delete</button>
             
               </Card.Body>
             </Card>
           </Col>
         ))}
       </Row>
-      <button variant='secondary' className="create" onClick={routeChange} > Create Image</button>
+      {/* <button variant='secondary' className="create" onClick={routeChange} > Create Image</button> */}
       
       
     </Container>

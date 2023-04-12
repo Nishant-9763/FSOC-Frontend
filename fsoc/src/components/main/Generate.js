@@ -1,22 +1,22 @@
 import { useState ,useEffect} from "react"
 import React  from 'react'
-import "./Main.css"
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import "./Generate.css"
 import Spinner from 'react-bootstrap/Spinner';
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import {successToast,errorToast} from '../alert'
+
+
 
 
 const Main = () => {
   const { userId } = useParams();
-  if(userId.length <24){
-    alert("invaild route Please enter valid")
-  }
   let navigate = useNavigate()
+  let len = userId.length
+  if(len <24){
+   errorToast("invaild route Please enter valid")
+  }
   
   const [prompt,setPrompt] = useState('')
   const [nishnat,setNishnat] = useState([])
@@ -27,11 +27,10 @@ const Main = () => {
   // console.log(token);
   if(!token){
     navigate('/')
-    alert("please login first")
-  
+    errorToast("please login first")
   }
-    const create = function (event) {
 
+    const create = function (event) {
 
       setLoading(true)
       event.preventDefault()
@@ -44,30 +43,30 @@ const Main = () => {
           setLoading(false)
         })
         .catch((error) => {
-         
-          alert(error.response.data.message + " Error")
+          setLoading(false) 
+          errorToast(error.response.data.message + " Error")
         })
     }
    
 
-    const routeChange = () =>{ 
-      let path = `/image/getImage/${userId}`; 
-      navigate(path);
-    }
+    // const routeChange = () =>{ 
+    //   let path = `/image/getImage/${userId}`; 
+    //   navigate(path);
+    // }
 
 
 
   return (
-    <div className='divn'>
+   <div className='divn'>
        
        <form onSubmit={create}  className="form">
             <p className="h1">Descibe Your Text</p>
             <input className="prompt" type="text" placeholder='Enter text' onChange={((e)=>setPrompt(e.target.value))} /> <br/>
             {/* <input placeholder='enter size' /> <br/> */}
             {/* <button type="submit">Generate</button> */}
-            {loading ? "":(<input className="btn" type="submit" placeholder="Generate" />)}
+            {loading ? "":(<input className="battan" type="submit" placeholder="Generate" />)}
             {loading ? <div>
-                      <Spinner className="spin" animation="border" variant="info" />
+                      <Spinner className="spinner" animation="border" variant="info" />
                      
                       </div>
             
@@ -78,22 +77,22 @@ const Main = () => {
             
         </form>
         <div>
-                            <div class="row">
-                      <div class="column">
+                            <div className="row">
+                      <div className="column">
                         <img src={nishnat[0]}  />
                       </div>
-                      <div class="column">
+                      {/* <div className="column">
                         <img src={nishnat[1]} />
                       </div>
-                      <div class="column">
+                      <div className="column">
                         <img src={nishnat[2]}/>
-                      </div>
+                      </div> */}
                     </div>
        
           
         </div>
         <br />
-        <Button className="get" onClick={routeChange}>Get All Images</Button>
+        {/* <Button className="get" onClick={routeChange}>Get All Images</Button> */}
 
     </div>
   )

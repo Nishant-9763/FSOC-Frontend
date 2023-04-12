@@ -1,11 +1,12 @@
 import React from 'react'
+import './NotFound.css'
 
-const userNotFound = () => {
+const NotFound = () => {
   return (
     <div className='not'>
-        404 Invalid Route
+     <p className='sty'> 404 Invalid Route</p>   
     </div>
   )
 }
 
-export default userNotFound
+export default NotFound

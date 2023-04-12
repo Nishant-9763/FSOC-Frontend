@@ -2,9 +2,10 @@ import React ,{useState}from "react";
 import "./login.css"
 import axios from "axios";
 import {useNavigate} from"react-router-dom"
-
+import {successToast,errorToast} from '../alert'
 
 const Login = () =>{
+
 
     const navigate = useNavigate()
 
@@ -19,9 +20,10 @@ const Login = () =>{
            email,password
         })
             .then((res) => {
-                alert(`Your Acount Login Succesfully`)
+                successToast('Your Acount Login Succesfully')
+                // ()=>notify('jiii')
             const userId  =  res.data.data.userId
-                console.log(res.data.data.token);
+                // console.log(res.data.data.token);
 
                 const token = res.data.data.token;
                 // console.log(token)
@@ -33,7 +35,7 @@ const Login = () =>{
 
                 navigate(`/image/getImage/${userId}`)
             }).catch((err) => {
-                alert(err.response.data.message + err.response.status + " Error")
+                errorToast(err.response.data.message + err.response.status + " Error")
             })
     }
 

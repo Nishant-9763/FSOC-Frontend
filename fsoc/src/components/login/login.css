@@ -9,6 +9,7 @@
   font-family: Arial, sans-serif;
 } */
 .login {
+    margin-top: 5%;
     width: 400px;
     background: #fff;
     border: 1px solid #dddfe2;
@@ -17,6 +18,7 @@
     padding: 1rem;
     align-items: center;
     text-align: center;
+    margin-left: 35%;
 }
 
 .login > input {

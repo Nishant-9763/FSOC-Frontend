@@ -9,7 +9,7 @@
 }
 
 :root {
-  --primary-color: #f9b64d;
+  --primary-color: #f5ca5d;
 }
 
 body {
@@ -96,6 +96,24 @@ form button {
   margin-top: 20px;
   
 }
+.delete{
+  border-color: #fff;
+  border-radius: 5px;
+
+  padding: 1rem 2rem;
+  width: 200px;
+  height: 50px;
+  margin-left: 20%;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  /* background: #333; */
+  color: #eacfcf;
+
+  }
+  .delete:hover{
+    transform: scale(1.1);
+  }
 
 form button:hover {
   transform: scale(1.1);
@@ -120,12 +138,7 @@ img {
 }
 
 
-.delete{
-border-color: #fff;
-width: 20px;
-height: 20px;
 
-}
 .create{
   
   margin: auto;
@@ -156,6 +169,8 @@ margin-left: 30px;
   border-style: dotted;
   box-shadow: 0 0 1em gray;
   position:static;
+ 
+ 
 }
 .card:hover {
   transform: scale(1.1);

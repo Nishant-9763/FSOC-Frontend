@@ -49,13 +49,16 @@ code {
   text-align: center;
   margin: auto;
 }
-.btn{
+.battan{
   width: 300px;
   height: 50px;
   margin: auto;
   border-radius: 15px;
   background-color: rgb(242, 238, 238);
   
+}
+.spinner{
+  margin-left: 50%;
 }
 .get{
   text-align: center;

@@ -2,6 +2,8 @@ import React,{useState}from "react";
 import "./register.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {successToast,errorToast} from '../alert'
+
 
 const Register = () =>{
 
@@ -21,28 +23,27 @@ const Register = () =>{
            email,password,name,phone_number
         })
             .then((res) => {
-                alert(`Your registered Succesfully`)
+                successToast(`Your registered Succesfully`)
                 let naam = res.data.data.name
                 // const token = res.data.token;
                 localStorage.setItem("user_name", naam)
                  navigate('/')
             }).catch((err) => {
-                alert(err.response.data.message + "Error")//+ err.response.status+ " Error"
+                errorToast(err.response.data.message + "Error")//+ err.response.status+ " Error"
             })
     }
 
 
     return(
-        <div className="register">
+        <div  className="register">
             
             <h1>Register</h1>
            
-            <input type='name' placeholder="Name" onChange={((e) => setName(e.target.value))}/>
-            <input type='phone_number' placeholder="Ph.Number" onChange={((e) => setPhone_number(e.target.value))}/>
-            <input type='email' placeholder="Email id" onChange={((e) => setEmail(e.target.value))} />
-            <input type='password' placeholder="Password" onChange={((e) => setPassword(e.target.value))}/>
+            <input type='name' placeholder="Name" onChange={((e) => setName(e.target.value))} required />
+            <input type='phone_number' placeholder="Ph.Number" onChange={((e) => setPhone_number(e.target.value))} required/>
+            <input type='email' placeholder="Email id" onChange={((e) => setEmail(e.target.value))} required />
+            <input type='password' placeholder="Password" onChange={((e) => setPassword(e.target.value))} required/>
             
-            {/* <input type="password"  placeholder=" Re-enter Password"onChange={((e) => setreEnterPassword(e.target.value))}></input> */}
 
             <div className="button" onClick={register}>Register</div>
             <div>or</div>
