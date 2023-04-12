@@ -35,7 +35,7 @@ const Login = () =>{
 
                 navigate(`/image/getImage/${userId}`)
             }).catch((err) => {
-                errorToast(err.response.data.message + err.response.status + " Error")
+                errorToast(err.response.data.message + "" + " Error")//err.response.status
             })
     }
 

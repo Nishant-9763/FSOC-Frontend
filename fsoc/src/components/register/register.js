@@ -29,7 +29,7 @@ const Register = () =>{
                 localStorage.setItem("user_name", naam)
                  navigate('/')
             }).catch((err) => {
-                errorToast(err.response.data.message + "Error")//+ err.response.status+ " Error"
+                errorToast(err.response.data.message + ""  +"Error")//+ err.response.status+ " Error"
             })
     }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import './nav.css'
 import { Navbar, Nav, NavDropdown, NavItem, Container } from 'react-bootstrap';
 import { Link ,useNavigate} from 'react-router-dom';
+import {successToast,errorToast} from '../alert'
 
 function Header() {
 
@@ -21,7 +22,7 @@ function Header() {
     
     <Navbar   bg="black" expand="md" collapseOnSelect  variant="dark">
       <Container>
-        <Navbar.Brand onClick={()=>alert("Welcome to AI world !!!")} >AI Generated Images</Navbar.Brand>
+        <Navbar.Brand onClick={()=>successToast("Welcome to AI world !!!")} >AI Generated Images</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
