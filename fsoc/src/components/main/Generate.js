@@ -35,7 +35,7 @@ const Main = () => {
       setLoading(true)
       event.preventDefault()
       
-      axios.post(`http://localhost:3001/image/generateImage/${userId}`,{prompt},{'headers': {'Authorization': 'Bearer ' + token}})
+      axios.post(`https://saber-fish-estimate.glitch.me/image/generateImage/${userId}`,{prompt},{'headers': {'Authorization': 'Bearer ' + token}})
         .then((res) => {
           
           setNishnat(res.data.data.imageUrl)

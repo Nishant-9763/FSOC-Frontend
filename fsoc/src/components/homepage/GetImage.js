@@ -31,7 +31,7 @@ const HomePage = () => {
     
     }
     function getUser(){ 
-     axios.get(`http://localhost:3001/image/getImage/${userId}` ,  {'headers': {'Authorization': 'Bearer ' + token}} )
+     axios.get(`https://saber-fish-estimate.glitch.me/image/getImage/${userId}` ,  {'headers': {'Authorization': 'Bearer ' + token}} )
      
      .then((res)=>{
        if(res.data.data.length == 0) {successToast("No images to show ,Please create first")}
@@ -55,7 +55,7 @@ const HomePage = () => {
   
 function deleteImage(id){
   alert(" Image deleted ")
-  axios.delete(`http://localhost:3001/image/deleteImage/${userId}/${id}`, {'headers': {'Authorization': 'Bearer ' + token}})
+  axios.delete(`https://saber-fish-estimate.glitch.me/image/deleteImage/${userId}/${id}`, {'headers': {'Authorization': 'Bearer ' + token}})
   .then((res)=>{
  
     getUser()
