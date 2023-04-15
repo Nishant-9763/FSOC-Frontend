@@ -1,70 +1,238 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# AI Image Generation App
 
-## Available Scripts
 
-In the project directory, you can run:
+The application use OpenAI's GPT (Generative Pre-trained Transformer) technology to generate images based on user input. Users provide text descriptions and on that basis AI generate an image that matches the description.
 
-### `npm start`
+This project is an example of how we can use AI to show our creativity and make beautiful images.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Currently we only taking text description from the user to generate image but in future we will take size and number of images to generate images as user want.Apart from this we will improve our login and register process also.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Demo
+Frontend   -
+https://github.com/Nishant-9763/FSOC-Frontend.git
+Backend    - 
+https://github.com/Nishant-9763/FSOC-Backend.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+Clone above github link to your local machine and follow below commands :-
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-----------Frontend Project -------------------------------
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1]  Clone the FSOC-Frontend project
+```bash
+  git clone https://github.com/Nishant-9763/FSOC-Frontend.git
+```
+2]  Go to the project directory
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  cd fsoc
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3] Install dependencies
 
-## Learn More
+```bash
+  npm install or npm i
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4] Start the server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  npm run start
+```
 
-### Code Splitting
+-----------Backend Project ---------------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1]  Clone the FSOC-Backend project
+```bash
+  git clone https://github.com/Nishant-9763/FSOC-Backend.git
+```
 
-### Making a Progressive Web App
+3] Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+  npm install or npm i
+```
 
-### Advanced Configuration
+4] Start the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+  npm run start
+```
 
-### Deployment
+    
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To run this project, you will need to add the following environment variables to  your ".env file"
 
-### `npm run build` fails to minify
+`API_KEY`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`ANOTHER_API_KEY`
+
+`PORT` ---Port Number
+
+`url` ---MongoDb Url
+
+`KEY`  ---Jwt Secret Key
+
+`OPENAI_API_KEY` ---OpenAI API key
+
+/-------------Cloudinary Details---------------------/ 
+
+`CLOUD_NAME`    -----cloudinary unique code      
+
+`API_KEY`    -------coludinary API key
+
+`API_SECRET`   -------cloudinary API secret Key
+
+---------------------------------------------------------
+## API Reference
+
+#### Register User
+
+```http
+  POST /register
+```
+This endpoint register a user with taking details like  - full name,mobile_number,email_id and password.
+
+#### Login User
+```http
+  POST /login
+```
+ This endpoint login a user by taking correct email_id and password, and redirect them to create page.
+
+#### Create Image
+```http
+  POST /generateImage/${userId}
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `userId` | `string` | **Required**. UserId of logged in user |
+
+ This endpoint create a post or Image base on user text description.
+
+
+
+
+#### Get Images
+
+```http
+  GET /getImage/${userid}
+```
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `userId` | `string` | **Required**. UserId of logged in user |
+
+#### This endpoint get all images or post that user created .
+
+#### Delete Image
+```http
+  DELETE /deleteImage/${userid}/${imageId}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+|`userId`   | `string` | **Required**. UserId of logged in user|
+| `imageId` | `string` | **Required**. Id of images to delete |
+
+#### This endpoint delete a particular image based on imageId that we provided.
+
+
+## Images that generate from AI App 
+
+![Astronaut on dog](https://res.cloudinary.com/ddraawvgd/image/upload/v1681464814/1681464812334.png)
+
+![Astronaut on road](https://res.cloudinary.com/ddraawvgd/image/upload/v1681465018/1681465016237.png)
+
+
+## Tech Stack
+
+**Client:** React, Bootstrap 4, React Bootstrap
+
+**Server:** Node, Express, MongoDb 
+
+
+## Other than that all we use some packages like 
+
+`bcrypt` - to bcrypt password 
+
+
+`shortid` - to generate unique id of user and images
+
+
+`jsonwebtoken` - use to authenticate the user
+
+
+`react-toastify` - use to show response message
+
+
+`axios` - to make a protected Db call
+
+
+`mongoose` - to commnicate between mongoDb and Node
+
+
+`dotenv` - to protect our url,secret key,api keys
+
+`openai` - to use api of openai to generate images
+
+`cors` - make a connection bewtween forntend and backend
+
+`cloudinary` - to store ai generated imgaes 
+
+`nodemon` - to run server without stopping
+
+
+
+
+## Documentation
+
+[React](https://react.dev/)
+
+[OpenAi](https://platform.openai.com/docs/guides/images)
+
+[MongoDB](https://www.mongodb.com/docs/)
+
+[Nodejs](https://nodejs.org/en/docs)
+
+[Express](https://expressjs.com/en/api.html#express)
+
+[bcrypt](https://www.npmjs.com/package/bcrypt)
+
+[shortid](https://www.npmjs.com/package/shortid)
+
+[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+
+[react-toastify](https://www.npmjs.com/package/react-toastify)
+
+[axios](https://www.npmjs.com/package/axios)
+
+[mongoose](https://mongoosejs.com/docs/documents.html)
+
+[dotenv](https://www.npmjs.com/package/dotenv)
+
+[cors](https://www.npmjs.com/package/cors)
+
+[cloudinary](https://cloudinary.com/documentation)
+
+[nodemon](https://www.npmjs.com/package/nodemon)
+
+
+
+## Authors
+
+- [Nishant](https://github.com/Nishant-9763)
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at nishantgupta9763@gmail.com
+
