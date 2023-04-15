@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* .divn { */
+  /* background-color: rgb(244, 241, 234);
+ width: 1000px;
+ height: 700px; */
+ /* text-align: center; */
+ /* display: flex; */
+ /* justify-content: center; */
+ 
+/* } */
+.form{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.h1{
+  margin-top: 20px;
+  text-align: center;
+  size: 800px;;
+}
+.prompt{
+  margin-top: 20px;
+  width: 500px;
+  height: 50px;
+  text-align: center;
+  margin: auto;
+}
+.battan{
+  width: 300px;
+  height: 50px;
+  margin: auto;
+  border-radius: 15px;
+  background-color: rgb(242, 238, 238);
+  
+}
+.spinner{
+  margin-left: 50%;
+}
+.get{
+  text-align: center;
+  
+  width: 200px;
+  height: 50px;
+  /* margin: auto; */
+  background-color: black;
+}
+.spin{
+  margin: auto;
+}
+img{
+  width: 450px;
+  height: 500px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
